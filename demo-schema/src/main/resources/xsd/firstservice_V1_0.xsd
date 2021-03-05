@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:tns="urn:srv.pbd.fs.edb.com:domain:firstservice:v1_0"
+	xmlns:firstservice="urn:srv.pbd.fs.edb.com:domain:firstservice:v1_0"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="urn:srv.pbd.fs.edb.com:domain:firstservice:v1_0"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1">
+	<xs:import namespace="http://edb.com/ws/WSCommon_v21"
+			   schemaLocation="WSCommon_v21.xsd" />
+	<xs:import namespace="http://edb.com/ws/WSCommon_v22"
+			   schemaLocation="WSCommon_v22.xsd" />
+	<xs:complexType name="firstServiceDetailsResponse">
+		<xs:annotation>
+			<xs:documentation>
+				Complex Type for evry transaction code details
+				response.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="demoModel" type="firstservice:modelA"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						demo model
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="modelA">
+		<xs:annotation>
+			<xs:documentation>
+				Demo model
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="fieldA" type="xs:string"
+				minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						field a
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fieldB" type="xs:string"
+						minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						field a
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fieldC" type="xs:string"
+						minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						field c
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

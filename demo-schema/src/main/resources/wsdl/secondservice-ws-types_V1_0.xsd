@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="urn:srv.pbd.fs.edb.com:ws:secondservice:v1_0"
+           xmlns:secondservice="urn:srv.pbd.fs.edb.com:domain:secondservice:v1_0"
+
+           targetNamespace="urn:srv.pbd.fs.edb.com:ws:secondservice:v1_0"
+           elementFormDefault="qualified" attributeFormDefault="unqualified"
+           version="1">
+    <xs:import namespace="urn:srv.pbd.fs.edb.com:domain:firstservice:v1_0"
+               schemaLocation="../xsd/firstservice_V1_0.xsd"/>
+    <xs:import namespace="http://edb.com/ws/WSCommon_v21"
+               schemaLocation="../xsd/WSCommon_v21.xsd"/>
+    <xs:import namespace="urn:srv.pbd.fs.edb.com:domain:secondservice:v1_0"
+               schemaLocation="../xsd/secondservice_V1_0.xsd"/>
+    <xs:annotation>
+        <xs:documentation>
+            Demo
+        </xs:documentation>
+    </xs:annotation>
+    <xs:element name="secondServiceRequest" type="tns:secondServiceRequest">
+        <xs:annotation>
+            <xs:documentation>Request for List Evry TransactionCode
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:element name="secondServiceResponse" type="tns:secondServiceResponse">
+        <xs:annotation>
+            <xs:documentation>Response for List Evry TransactionCode
+            </xs:documentation>
+        </xs:annotation>
+    </xs:element>
+
+    <xs:complexType name="secondServiceRequest">
+        <xs:annotation>
+            <xs:documentation>
+                Demo request
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="secondserviceinput"
+                        type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>input
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="secondServiceResponse">
+        <xs:annotation>
+            <xs:documentation>
+                Demo response secondservice
+            </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element name="secondServiceDetails"
+                        type="secondservice:secondServiceDetailsResponse" minOccurs="0"
+                        maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

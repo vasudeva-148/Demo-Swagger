@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://edb.com/ws/WSCommon_v22" xmlns="http://edb.com/ws/WSCommon_v22" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!-- The data of the client context is used for audit trail purposes (logging, journalizing, authorization). It may well be that some of these data also exist within the payload of the message -->
+	<xsd:complexType name="ClientContextType">
+		<xsd:sequence>
+			<xsd:element name="userid" type="xsd:string" minOccurs="1" nillable="false">
+			   <xsd:annotation>
+				<xsd:documentation>Identifies the person who initiated the action This could either be the customer itself in a netbank) or an employee</xsd:documentation>
+			   </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="credentials" type="xsd:string" minOccurs="1" nillable="false">
+			   <xsd:annotation>
+				<xsd:documentation>Authorization data. This is typically a security Object retriewed from a logon, but can also be a plain password.</xsd:documentation>
+			   </xsd:annotation>
+            </xsd:element>
+			<xsd:element name="channel" type="xsd:string" minOccurs="1" nillable="false">
+			   <xsd:annotation>
+				<xsd:documentation>Indicated what type of application that initiated the request</xsd:documentation>
+			   </xsd:annotation>
+            </xsd:element>
+			<xsd:element name="orgid" type="xsd:string" minOccurs="1" nillable="false">
+			   <xsd:annotation>
+				<xsd:documentation>The OrganizationalId - will in a banking context be Financial Institution / Konsernnr</xsd:documentation>
+			   </xsd:annotation>
+            </xsd:element>
+			<xsd:element name="orgunit" type="xsd:string" minOccurs="0" nillable="true">
+			   <xsd:annotation>
+				<xsd:documentation>The Organizational unit will in a banking context be Branch / Registernr</xsd:documentation>
+			   </xsd:annotation>
+            </xsd:element>
+			<xsd:element name="customerid" type="xsd:string" minOccurs="0" nillable="true">
+			   <xsd:annotation>
+				<xsd:documentation>Id of the customer on which the operation is requested, may be the same as userid, but may well be different</xsd:documentation>
+			   </xsd:annotation>
+            </xsd:element>
+			<xsd:element name="locale" type="xsd:string" minOccurs="0" nillable="true">
+			   <xsd:annotation>
+				<xsd:documentation>Locale in a java syntax e.g "en_EN". May be used if application supports localized response</xsd:documentation>
+			   </xsd:annotation>
+            </xsd:element>
+			<xsd:element name="ip" type="xsd:string" minOccurs="1" nillable="false">
+			   <xsd:annotation>
+				<xsd:documentation>The ip adress of the client</xsd:documentation>
+			   </xsd:annotation>
+            </xsd:element>
+			<xsd:element name="item" type="itemType" minOccurs="0" maxOccurs="unbounded" nillable="true">
+			   <xsd:annotation>
+				<xsd:documentation>Optionnal extention items - Add key/value pairs for application specific extentions</xsd:documentation>
+			   </xsd:annotation>
+            </xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="itemType">
+		<xsd:attribute name="key" type="xsd:string" use="required" />
+		<xsd:attribute name="value" type="xsd:string" use="required" />
+	</xsd:complexType>
+	<xsd:complexType name="EDBHeaderType">
+		<xsd:sequence>
+			<xsd:element name="SourceApplication" type="xsd:string" minOccurs="1" nillable="false">
+			  <xsd:annotation>
+			    <xsd:documentation>
+			    Identifies the source that initiated the message. Used to separate different service consumers.
+			    </xsd:documentation>
+			  </xsd:annotation>
+			</xsd:element>
+			<xsd:element name="DestinationApplication" type="xsd:string" minOccurs="1" nillable="false">
+              <xsd:annotation>
+                <xsd:documentation>
+                Identifies the destination of the message. Used to separate different service providers.
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Function" type="xsd:string" minOccurs="1" nillable="false">
+              <xsd:annotation>
+                <xsd:documentation>
+                Identifies the service to be called.
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Version" type="xsd:string" minOccurs="1" nillable="false">
+              <xsd:annotation>
+                <xsd:documentation>
+                Service version "X.Y.Z" according to this standard:
+                X = Main release (major changes, not necessarily backwards compatible)
+                Y = Minor release (backwards compatible, new functionality)
+                Z = Bugfix (backwards compatible, error correction only)
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+			<xsd:element name="ClientContext" type="ClientContextType">
+              <xsd:annotation>
+                <xsd:documentation>
+                Elements for identifying client context information.
+                </xsd:documentation>
+              </xsd:annotation>
+            </xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AutHeader" type="EDBHeaderType"/>
+	
+  <xsd:complexType name="ResponseStateType">
+    <xsd:sequence>
+      <xsd:element name="ErrorCode" type="xsd:int" minOccurs="1" nillable="false">
+        <xsd:annotation>
+          <xsd:documentation>Numeric error code reported for this error.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Severity" type="xsd:int" minOccurs="1" nillable="false">
+        <xsd:annotation>
+          <xsd:documentation>Response Status Severity Code</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="ComponentId" type="xsd:int" minOccurs="1" nillable="false">
+        <xsd:annotation>
+          <xsd:documentation>Unique code identifying the component returning the service response</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="Message" type="xsd:string"  minOccurs="1" nillable="false">
+        <xsd:annotation>
+          <xsd:documentation>Message describing the error. Default is english language. Optionally localized according to the locale parameter in the service request</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="LogSequence" type="xsd:long"  minOccurs="0" nillable="true">
+        <xsd:annotation>
+          <xsd:documentation>Optional key generated to be used for log correlation purposes.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+      <xsd:element name="errorItem" type="errorItemType" minOccurs="0" nillable="true" maxOccurs="unbounded">
+        <xsd:annotation>
+          <xsd:documentation>Optional extention items - key/value pairs are used for extented error inforamtion.</xsd:documentation>
+        </xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="errorItemType">
+    <xsd:annotation>
+      <xsd:documentation></xsd:documentation>
+    </xsd:annotation>
+    <xsd:attribute name="key" type="xsd:string" use="required"  />
+    <xsd:attribute name="value" type="xsd:string" use="required" />
+  </xsd:complexType>
+	
+</xsd:schema>
