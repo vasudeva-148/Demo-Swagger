@@ -11,6 +11,8 @@ secondservice_V1_0.xsd
 
 These schemas under a different namespace use same simple names for a type/schema (demoModel-> modelA)
 
+
+
 **Module : demo-ws**
 
 Contains 2 rest services -
@@ -20,6 +22,8 @@ SecondServiceV10Rs
 FirstServiceV10Rs uses the schema from the firstservice-ws-types_V1_0.xsd and firstservice_V1_0.xsd
 SecondServiceV10Rs uses the schema from secondservice-ws-types_V1_0.xsd and secondservice_V1_0.xsd
 
+
+
 **ISSUE:**
 
 Schemas/Types that undergoes conflict - FirstServiceResponse.FirstServiceDetailsResponse.ModelA AND SecondServiceResponse.SecondServiceDetailsResponse.ModelA
@@ -27,9 +31,12 @@ Swagger definitions for both the services end up refering to a single ModelA def
 SecondServiceResponse.SecondServiceDetailsResponse.ModelA
 
 
+
 **Building the project : **
 
 mvn clean install in the root of Demo-Swagger directory
+
+
 
 **What to look for when you have built it : **
 
