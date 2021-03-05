@@ -24,7 +24,7 @@ SecondServiceV10Rs uses the schema from secondservice-ws-types_V1_0.xsd and seco
 
 
 
-**ISSUE:**
+**Issue:**
 
 Schemas/Types that undergoes conflict - FirstServiceResponse.FirstServiceDetailsResponse.ModelA AND SecondServiceResponse.SecondServiceDetailsResponse.ModelA
 Swagger definitions for both the services end up refering to a single ModelA definition which is artbitrarily picked up from FirstServiceResponse.FirstServiceDetailsResponse.ModelA OR 
@@ -32,13 +32,13 @@ SecondServiceResponse.SecondServiceDetailsResponse.ModelA
 
 
 
-**Building the project : **
+**Building the project :**
 
 mvn clean install in the root of Demo-Swagger directory
 
 
 
-**What to look for when you have built it : **
+**What to look for when you have built it :**
 
 Go to ..Demo-Swagger\demo-ws\target\classes\META-INF\resources and check the file swagger-v6.json. On viewing the file in json viewer we can see that the there is only one type definition 
 generated for ModelA. Due to which both the FirstServiceResponse and SecondServiceResponse end up referring to same ModelA definition thus creating an incorrect definition.
