@@ -5,18 +5,12 @@
     <artifactId>demo-swagger</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <scm>
-        <connection>scm:git:ssh://git@fsstash.evry.com:7999/payment_pbd/pbd-server.git</connection>
-        <developerConnection>scm:git:ssh://git@fsstash.evry.com:7999/payment_pbd/pbd-server.git</developerConnection>
-        <url>http://fsstash.evry.com/projects/PAYMENT_PBD/repos/pbd-server/browse</url>
-        <tag>pbd-server-2.6.1</tag>
-    </scm>
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 		<argLine>-Xmx4096m -XX:MaxPermSize=1536</argLine>
         <cxf.core.version>3.3.3</cxf.core.version>
-        <cxf.codegen.plugin.version>3.3.0-EVRY-CXF-7852</cxf.codegen.plugin.version>
+        <cxf.codegen.plugin.version>3.4.2</cxf.codegen.plugin.version>
         <cxf.xjc.version>3.2.3</cxf.xjc.version>
         <spring.extensions.version>12.0.0</spring.extensions.version>
         <common.validators>1.0</common.validators>
@@ -127,11 +121,6 @@
                 <groupId>commons-collections</groupId>
                 <artifactId>commons-collections</artifactId>
                 <version>${commons.collections.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.evry.fs.payment.common</groupId>
-                <artifactId>common-validators</artifactId>
-                <version>${common.validators}</version>
             </dependency>
             <dependency>
                 <groupId>com.edb.finance.common</groupId>
@@ -597,15 +586,6 @@
                     <version>${spring.boot.version}</version>
                     <configuration>
                         <skip>true</skip>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>com.evry.fs.tac.adcm</groupId>
-                    <artifactId>adcm-maven-plugin</artifactId>
-                    <version>1.12.6</version>
-                    <configuration>
-                        <timeoutInSeconds>1200</timeoutInSeconds>
-                        <verbose>true</verbose>
                     </configuration>
                 </plugin>
                 <plugin>

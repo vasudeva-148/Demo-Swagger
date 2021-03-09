@@ -264,7 +264,7 @@
             <plugin>
                 <groupId>com.github.kongchen</groupId>
                 <artifactId>swagger-maven-plugin</artifactId>
-                <version>3.1.4-EVRY-HACK2</version>
+                <version>3.1.8</version>
                 <executions>
                     <execution>
                         <id>v6</id>
@@ -283,32 +283,11 @@
                                     <schemes>
                                         <scheme>https</scheme>
                                     </schemes>
-                                    <swaggerApiReader>com.github.kongchen.swagger.docgen.reader.EvryCustomReader</swaggerApiReader>
-                                    <host>bankportal.preprod.evry.com</host>
-                                    <basePath>/secesb/rest/pbdsrv</basePath>
+                                    <host>http://localhost:8080</host>
+                                    <basePath>/demo</basePath>
                                     <info>
                                         <title>Swagger API Spec</title>
                                         <version>v6</version>
-                                        <!-- use markdown here because I'm using markdown for output,
-                        if you need to use html or other markup language, you need to use your target language,
-                         and note escape your description for xml -->
-                                        <description>
-                                            Payment Business Data (PBD) REST API- version 6.
-                                        </description>
-                                        <termsOfService>
-                                            © EVRY. All rights reserved. This code/information is protected by national and international law and
-                                            may not be used, copied, amended, compiled, decompiled, transferred etc. without the explicitly
-                                            written prior consent from EVRY. Any use in violation of the said will be prosecuted and compensation
-                                            will be claimed.
-                                        </termsOfService>
-                                        <contact>
-                                            <email>stig.magnus.knutsen@evry.com</email>
-                                            <name>Stig Magnus Knutsen</name>
-                                            <url>https://evry.com</url>
-                                        </contact>
-                                        <license>
-                                            <name>EVRY FS License</name>
-                                        </license>
                                     </info>
                                     <outputPath>${project.build.outputDirectory}/META-INF/resources/api.html</outputPath>
                                     <swaggerDirectory>${project.build.outputDirectory}/META-INF/resources</swaggerDirectory>

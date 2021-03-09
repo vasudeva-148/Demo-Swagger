@@ -13,7 +13,7 @@
     </description>
 	<properties>
 		<fluentapi.version>3.0</fluentapi.version>
-		<evry.pbd.systemName>PBD</evry.pbd.systemName>
+		<systemName>Swagger-Demo</systemName>
 		<wsHeaderVersion>V21</wsHeaderVersion>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -50,6 +50,7 @@
 	</dependencies>
 	<build>
 		<plugins>
+			<!-- Custom Plugin to generate models from schema -->
 			<plugin>
 				<groupId>com.edb.finance</groupId>
 				<artifactId>wsfabric-maven-plugin</artifactId>
@@ -62,7 +63,7 @@
 						</goals>
 						<configuration>
 							<wsdlConfiguration>
-								<systemName>${evry.pbd.systemName}</systemName>
+								<systemName>${systemName}</systemName>
 								<wsHeaderVersion>${wsHeaderVersion}</wsHeaderVersion>
 								<serviceName>FirstService_V1_0</serviceName>
 								<schema>src/main/resources/wsdl/firstservice-ws-types_V1_0.xsd</schema>
@@ -76,7 +77,7 @@
 						</goals>
 						<configuration>
 							<wsdlConfiguration>
-								<systemName>${evry.pbd.systemName}</systemName>
+								<systemName>${systemName}</systemName>
 								<wsHeaderVersion>${wsHeaderVersion}</wsHeaderVersion>
 								<serviceName>SecondService_V1_0</serviceName>
 								<schema>src/main/resources/wsdl/secondservice-ws-types_V1_0.xsd</schema>
